@@ -567,13 +567,16 @@ def abstractive_summarize(text: str, model_name: str = "sshleifer/distilbart-cnn
 # -----------------------
 # Streamlit UI
 # -----------------------
-st.set_page_config(page_title="🧩 Code Review + PDF Summarizer", page_icon="🧩", layout="wide")
+# --- MODIFIED LINE 1: Changed page_icon to 💻 ---
+st.set_page_config(page_title="🛠️ Code Review + PDF Summarizer", page_icon="💻", layout="wide")
 
 if "use_ai" not in st.session_state:
     st.session_state["use_ai"] = False
 
-st.sidebar.title("Menu")
-page = st.sidebar.radio("Go to", ["🧾 Code Review", "📘 PDF Summarizer"])
+# --- MODIFIED LINE 2: Changed sidebar title ---
+st.sidebar.title("HOW CAN I HELP YOU?") 
+# --- MODIFIED LINE 3: Changed Code Review radio option icon ---
+page = st.sidebar.radio("Go to", ["🛠️ Code Review", "📘 PDF Summarizer"])
 
 st.sidebar.markdown("---")
 st.sidebar.checkbox("Enable AI suggestions (OpenAI)", key="use_ai", help="Requires OPENAI_API_KEY and openai package.")
@@ -714,7 +717,7 @@ def render_pdf_summarizer():
                     st.markdown(f"Chunk {i}")
                     st.write(p)
 
-if page == "🧾 Code Review":
+if page == "🛠️ Code Review":
     render_code_review()
 else:
     render_pdf_summarizer()
